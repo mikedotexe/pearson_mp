@@ -47,6 +47,9 @@ function _mpProf($form, &$form_state) {
 }
 
 function _mpcurl($id = NULL, $type = NULL){
+	$apikey = get_api_key();
+	dsm($apikey, 'API Key');
+	
 	if (isset($id)) dsm($id, 'id');	
 	if (isset($type)) dsm($type, 'type');
 	
@@ -67,4 +70,9 @@ function _mpcurl($id = NULL, $type = NULL){
 	$result = json_decode($buffer);  
 	dsm($result, 'result');
 	return $result;
+}
+
+function get_api_key(){
+	include('mykey.php');
+	return $apikey;
 }
